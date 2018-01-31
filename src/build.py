@@ -1,10 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import sys
+import sys, os
 from services.BuildService import BuildService
 from services.ConfigService import ConfigService
 from services.IndexService import IndexService
+
+static_apidocs = os.path.join(os.path.dirname(os.path.abspath(__file__)), "static", "apidocs")
 
 configService = ConfigService()
 buildService = BuildService()
@@ -17,6 +19,6 @@ if len(sys.argv) > 1:
 if project_name:
     print(buildService.build(configService.project_path, project_name))
 else:
-    project_names = IndexService().get_path_dirs('./static/apidocs')
+    project_names = IndexService().get_path_dirs(static_apidocs)
     for project_name in project_names:
         print(buildService.build(configService.project_path, project_name))

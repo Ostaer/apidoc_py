@@ -9,39 +9,36 @@ Python > 3.x.x
     flask   
 nodejs > 8.x.x  
     apidoc
+git
 ```
 
-docker部署
+
 ------
 
 #### 1. 项目目录结构：
 ```
 ├── config
-│   ├── contrab
-│   │   └── crontabfile
-│   ├── docker-entrypoint.sh
 │   ├── nginx
 │   │   └── conf.d
 │   │       └── apidoc_py.conf
-│   └── uwsgi
-│       └── conf.d
-│           └── uwsgi.ini
-├── docker-compose.yml
-├── Dockerfile
-├── Dockerfile.dev
 ├── logs
 │   └── uwsgi.log
 ├── README.md
 └── src
     ├── app.py
     ├── build.py
-    ├── env.conf
+    ├── env.conf # code local storage location
     ├── services
     │   ├── BuildService.py
     │   ├── ConfigService.py
     │   ├── IndexService.py
+    │   ├── CodeService.py    
+    │   ├── exec_command.py    
+    │   ├── loggingcus.py    
     │   └── __init__.py
     ├── static
+    │   ├── apidocs
+    │   │   └── +AddProject
     │   ├── css
     │   │   └── index.css
     │   └── js
@@ -51,13 +48,12 @@ docker部署
     └── templates
         └── index.html
 ```
+### 变更部分
+修复部分bug
 
-#### 2. uwsgi服务配置文件目录：config/uwsgi/conf.d
-配置项目目录chdir，和日志目录logto
+去除一些功能
 
-#### 3. 定时任务计划文件配置目录：config/crontab/
-配置计划任务
+增加从git拉取代码生成文档功能
 
-#### 4. Dockerfile文件中配置环境变量
-PROJECT_PATH：项目源码路径
-WEB_DIR：站点目录
+![Example Screenshot](example.jpg "")
+

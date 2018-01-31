@@ -2,11 +2,12 @@
 
 import os
 
+
 class IndexService:
     '''
     首页服务类
     '''
-    IGNORE_DIR_AND_FILE = ['.idea','.vscode','vendor','framework','sdk', 'apidoc_py'] 
+    IGNORE_DIR_AND_FILE = ['.idea', '.vscode', 'vendor', 'framework', 'sdk', 'apidoc_py']
 
     def get_path_dirs(self, path):
         ''' Return dir name list
