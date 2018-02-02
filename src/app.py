@@ -59,7 +59,8 @@ def give_log(data):
     logfile = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "logs",
                            "{}.log".format(project_name))
     # init project logger
-    logger(logfile)
+    if project_name not in logging.Logger.manager.loggerDict:
+        logger(logfile)
 
     with open(logfile, 'r') as f:
         f.seek(0, 2)
