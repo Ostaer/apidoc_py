@@ -26,24 +26,25 @@ def execute_from_command_line(paras):
         build_service.copy(project_dir, project_name)
         build_service.delete(project_dir, project_name)
 
-    if subcmd.lower() == "run":
-        from src.app import socketio, app
-        if len(paras) == 2:
-            socketio.run(app, debug=False, host='0.0.0.0', port=5000)
-        elif len(paras) == 3:
-            s = paras[2]
-            import re
-            try:
-                p = re.compile(r'(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}):(\d{1,5})')
-                ret = re.match(p, s)
-                if ret:
-                    host, port = ret.groups()
-                    socketio.run(app, debug=False, host=host, port=int(port))
-                else:
-                    Usage()
-            except:
-                lg.exception("parameter error: {}".format(s), exc_info=1)
-                Usage()
+    # unsupport websocket
+    # if subcmd.lower() == "run":
+    #     from src.app import socketio, app
+    #     if len(paras) == 2:
+    #         socketio.run(app, debug=False, host='0.0.0.0', port=5000)
+    #     elif len(paras) == 3:
+    #         s = paras[2]
+    #         import re
+    #         try:
+    #             p = re.compile(r'(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}):(\d{1,5})')
+    #             ret = re.match(p, s)
+    #             if ret:
+    #                 host, port = ret.groups()
+    #                 socketio.run(app, debug=False, host=host, port=int(port))
+    #             else:
+    #                 Usage()
+    #         except:
+    #             lg.exception("parameter error: {}".format(s), exc_info=1)
+    #             Usage()
         else:
             Usage()
 
@@ -53,8 +54,6 @@ def Usage( ):
     python {} {{subcommand}}
         subcommand:
             config config your environment
-            run [0.0.0.0:8000] startup with optional listen address and port
-                    default is 0.0.0.0:5000
 '''.format(sys.argv[0])
     sys.exit()
 

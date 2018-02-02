@@ -20,16 +20,16 @@ class BuildService:
             extend_path = ''
 
         if not base_path:
-            return ' base_path is not allow empty'
+            return 1, "", ' base_path is not allow empty'
 
         if not project_name:
-            return ' project_name is not allow empty'
+            return1, "", ' project_name is not allow empty'
 
         file_path = os.path.join(base_path, extend_path, project_name)
         if os.path.exists(file_path) is False:
             msg = 'File is not exists：' + str(file_path)
             lg.error(msg)
-            return msg
+            return 1, "", msg
 
         # cmd = 'apidoc -i ' + file_path + ' -c ' + file_path + ' -o ./static/apidocs/' + project_name
         lg.info("Start generate api document...")
@@ -56,7 +56,7 @@ class BuildService:
                 lg.exception("Copy src={} dest={}".format(src_file, dest_file), exc_info=1)
                 continue
 
-    def delete(self,base_path, project_name):
+    def delete(self, base_path, project_name):
         lg = logging.getLogger(project_name)
         cur_static_apidocs = os.path.join(base_path, project_name, "src", "static", "apidocs")
         src_project_dir = os.path.join(cur_static_apidocs, project_name)

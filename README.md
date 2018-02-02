@@ -6,7 +6,8 @@ apidoc_py
 --------
 ```
 Python > 3.x.x  
-    flask   
+    flask
+    gunicorn   
 nodejs > 8.x.x  
     apidoc
 git
@@ -28,6 +29,9 @@ apidoc.json
   "url" : "http://127.0.0.1:5000",
   "sampleUrl" : "http://127.0.0.1:5000"
 }
+
+src/env.conf
+本地项目存储路径
 ```
 执行配置命令
 
@@ -38,7 +42,7 @@ python manage.py config
 启动命令
 
 ```
-python manage.py run 0.0.0.0:80
+gunicorn src.app:app -c src/gunicorn_config.py
 ```
 
 
@@ -56,6 +60,7 @@ python manage.py run 0.0.0.0:80
 └── src
     ├── app.py
     ├── build.py
+    ├── gunicorn_config.py
     ├── env.conf # code local storage location
     ├── services
     │   ├── BuildService.py

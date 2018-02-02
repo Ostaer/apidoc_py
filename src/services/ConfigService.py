@@ -3,6 +3,8 @@
 import ConfigParser
 import os
 
+env_file = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "env.conf")
+
 
 class ConfigService:
     '''
@@ -11,7 +13,7 @@ class ConfigService:
 
     def __init__(self):
         conf = ConfigParser.ConfigParser()
-        conf.read("env.conf")
+        conf.read(env_file)
         self.__set_project_path(conf.get('path', 'project_path'))
 
     # 设置project_path属性
