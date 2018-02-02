@@ -18,6 +18,8 @@ git
 需要自定义自己的配置
 
 ```
+apidoc.json
+
 {
   "name": "Flask REST API",
   "version": "1.0.0",
@@ -47,8 +49,10 @@ python manage.py run 0.0.0.0:80
 │   │   └── conf.d
 │   │       └── apidoc_py.conf
 ├── logs
-│   └── uwsgi.log
+│   └── xxxx.log
 ├── README.md
+├── apidoc.json
+├── manage.py
 └── src
     ├── app.py
     ├── build.py
@@ -81,4 +85,3 @@ python manage.py run 0.0.0.0:80
 增加从git拉取代码生成文档功能
 
 ![Example Screenshot](example.jpg "")
-
