@@ -5,6 +5,7 @@ Created on 2018/1/29
 '''
 import os
 import time
+import shutil
 import logging
 from exec_command import execute_command
 
@@ -40,7 +41,7 @@ class CodeService:
             self.lg.info("Older directory is exist!")
             old_dir = os.path.join(self.work_dir, self.project_name)
             self.lg.info("Remove older directory {}".format(old_dir))
-            os.removedirs(old_dir)
+            shutil.rmtree(old_dir)
         else:
             self.lg.info("Older directory is not exist!")
 

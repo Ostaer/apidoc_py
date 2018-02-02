@@ -14,8 +14,33 @@ git
 
 
 ------
+#### 1. 运行方式
+需要自定义自己的配置
 
-#### 1. 项目目录结构：
+```
+{
+  "name": "Flask REST API",
+  "version": "1.0.0",
+  "description": "A Flask REST API example",
+  "title": "A Flask REST API example",
+  "url" : "http://127.0.0.1:5000",
+  "sampleUrl" : "http://127.0.0.1:5000"
+}
+```
+执行配置命令
+
+```
+python manage.py config
+```
+
+启动命令
+
+```
+python manage.py run 0.0.0.0:80
+```
+
+
+#### 2. 项目目录结构：
 ```
 ├── config
 │   ├── nginx
@@ -48,7 +73,7 @@ git
     └── templates
         └── index.html
 ```
-### 变更部分
+#### 3. 变更部分
 修复部分bug
 
 去除一些功能
